@@ -1,0 +1,37 @@
+# Project information
+site_name: Introduction to Information Retrieval
+site_url: https://murthyrudra.github.io/Information-Retrieval/
+site_author: Rudra Murthy
+
+# Repository
+repo_name: Information-Retrieval
+repo_url: https://github.com/murthyrudra/Information-Retrieval
+edit_uri: edit/main/docs
+
+# Navigation
+nav:
+  - Welcome:
+    - Introduction: index.md
+  - Classical Retrievers:
+    - Boolean Retrieval: boolean_retrieval/index.md
+    - TF-IDF Retriever: tfidf_retriever/index.md
+
+# Theme
+theme:
+  name: material
+  icon:
+    logo: material/library
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - search.suggest
+    - search.highlight
+  palette:
+    scheme: default
+    primary: blue
+    accent: blue
+
+# Plugins
+plugins:
+  - search
+  - social
