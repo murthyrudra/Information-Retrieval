@@ -30,6 +30,11 @@ theme:
     scheme: default
     primary: blue
     accent: blue
+  extra_css:
+    - https://unpkg.com/@material/mwc-button/mwc-button.css
+
+  extra_javascript:
+    - https://unpkg.com/@material/mwc-button/mwc-button.js
 
 # Plugins
 plugins:
