@@ -10,7 +10,7 @@ logo: images/ibm-blue-background.png
 
 In this tutorial we'll be using Python. The goals of this workshop are:
 
-* Implement Classical and Neural IR approaches!
+* Implement Classical and Neural IR approaches for Information Retrieval!
 * Have fun!
 
 ### About this tutorial
@@ -18,7 +18,11 @@ In this tutorial we'll be using Python. The goals of this workshop are:
 The tutorial session is broken down into the following sections:
 
 * Boolean Retrieval
+    - Please go through the [instructions](boolean_retrieval/index.html).
+* Tf-IDF Retrieval
+    - Please go through the [instructions](tfidf_retriever/index.html).
+* BM25  Retrieval
+* BiEncoder Retrieval
+* Cross-Encoder Retrieval
 
-## Boolean Retrieval
-Please go through the [instructions](boolean_retrieval/index.html).
 

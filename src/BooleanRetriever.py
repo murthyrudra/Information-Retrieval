@@ -1,4 +1,5 @@
 import re
+import os
 import datasets
 from collections import defaultdict
 from nltk.corpus import stopwords
@@ -6,13 +7,11 @@ from tqdm import tqdm
 
 
 class BooleanRetrieval:
-    def __init__(self, dataset_name="", config="corpus"):
+    def __init__(self, dataset_name="BNS"):
 
-        if len(dataset_name) > 0:
+        if dataset_name == "BNS":
             print("Loading dataset...")
-            self.dataset = datasets.load_dataset(
-                dataset_name, config, trust_remote_code=True
-            )["corpus"]
+            self.dataset = self.load_md_files("ilab_sdg/")
             print("Dataset loaded.")
         else:
             self.dataset = []
@@ -20,6 +19,32 @@ class BooleanRetrieval:
         self.inverted_index = defaultdict(set)
         self.documents = {}
         self.stop_words = set(stopwords.words("english"))
+
+    def load_md_files(self, base_folder):
+        md_files_dict = []
+
+        # Iterate through all folders in the base directory
+        for folder in os.listdir(base_folder):
+            folder_path = os.path.join(base_folder, folder)
+
+            # Check if it's a directory
+            if os.path.isdir(folder_path):
+                # Iterate through all .md files in the folder
+                for filename in os.listdir(folder_path):
+                    if filename.endswith(".md"):
+                        file_path = os.path.join(folder_path, filename)
+
+                        # Open the file and read its contents
+                        with open(file_path, "r", encoding="utf-8") as file:
+                            file_contents = file.read()
+
+                        # Store the contents in the dictionary with the key being "folder/filename"
+                        temp_doc = {}
+                        temp_doc["_id"] = f"{folder}/{filename}"
+                        temp_doc["text"] = file_contents
+                        md_files_dict.append(temp_doc)
+
+        return md_files_dict
 
     def preprocess(self, text):
         text = text.lower()

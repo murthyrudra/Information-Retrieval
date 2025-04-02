@@ -1,0 +1,3 @@
+[submodule "ilab_sdg"]
+	path = ilab_sdg
+	url = https://github.com/eco-bone/ilab_sdg.git
