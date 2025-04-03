@@ -15,6 +15,8 @@ nav:
   - Classical Retrievers:
     - Boolean Retrieval: boolean_retrieval/index.md
     - TF-IDF Retriever: tfidf_retriever/index.md
+  - Neural Retrievers:
+    - DPR: neural_retriever/index.md
 
 # Theme
 theme:
