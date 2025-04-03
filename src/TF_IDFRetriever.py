@@ -161,7 +161,7 @@ class TFIDFRetriever:
         scores.sort(key=lambda x: x[1], reverse=True)
 
         # Return top-k results
-        return scores[:top_k]
+        return scores[:top_k], query_vector
 
     def get_documents(self, doc_ids):
         """Get the content of documents by their IDs."""

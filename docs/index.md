@@ -23,6 +23,7 @@ The tutorial session is broken down into the following sections:
     - Please go through the [instructions](tfidf_retriever/index.html).
 * BM25  Retrieval
 * BiEncoder Retrieval
+    - Please go through the [instructions](neural_retriever/index.html).
 * Cross-Encoder Retrieval
 
 

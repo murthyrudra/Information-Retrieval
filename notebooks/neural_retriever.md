@@ -1,6 +1,6 @@
-## TF-IDF Retriever
+## Neural Retriever
 
-In this notebook, we will develop a TF-IDF Retriever on a small dataset. Let's import the TFIDFRetriever class
+In this notebook, we will develop a Neural Retriever on a small dataset. Let's import the NeuralRetriever class
 
 
 ```python
@@ -8,13 +8,13 @@ import sys
 import os
 
 sys.path.append(os.path.abspath(".."))
-from src.TF_IDFRetriever import TFIDFRetriever
+from src.NeuralRetriever import NeuralRetriever
 ```
 
 
 ```python
 # Create TF-IDF retriever
-retriever = TFIDFRetriever()
+retriever = NeuralRetriever("intfloat/e5-small-v2")
 ```
 
 
@@ -58,7 +58,7 @@ bns_data = load_md_files("ilab_sdg/")
 for each_section in bns_data:
     retriever.add_document(each_section["_id"], each_section["text"])
 
-retriever.update_index()
+retriever.build_index()
 ```
 
 
@@ -86,3 +86,4 @@ print("\nTop matching documents:")
 for doc_id, score in results:
     print(f"Document {doc_id} (Score: {score:.4f}): {retriever.documents[doc_id]}")
 ```
+

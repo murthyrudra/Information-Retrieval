@@ -1,6 +1,19 @@
-## TF-IDF Retriever
+---
+layout: default
+title: "Neural Retrieval"
+---
 
-In this notebook, we will develop a TF-IDF Retriever on a small dataset. Let's import the TFIDFRetriever class
+# Overview
+
+This project demonstrates how to build a Dense Passage Retrieval (DPR) System that allows users to perform queries on a collection of documents.
+
+## Installation
+Make sure you have Python installed, then install the required dependencies:
+```bash
+pip install sentence-transformers faiss
+```
+
+Now, we will develop a Neural Retriever on BNS sections. Let's import the NeuralRetriever class
 
 
 ```python
@@ -8,14 +21,17 @@ import sys
 import os
 
 sys.path.append(os.path.abspath(".."))
-from src.TF_IDFRetriever import TFIDFRetriever
+from src.NeuralRetriever import NeuralRetriever
 ```
+
+#### We will load the retriever and the dataset
 
 
 ```python
-# Create TF-IDF retriever
-retriever = TFIDFRetriever()
+retriever = NeuralRetriever("intfloat/e5-small-v2")
 ```
+
+Let us load some documents and them to the retriever class for indexing
 
 
 ```python
@@ -45,40 +61,22 @@ def load_md_files(base_folder):
                     md_files_dict.append(temp_doc)
 
     return md_files_dict
-```
 
-
-```python
 bns_data = load_md_files("ilab_sdg/")
-```
 
-
-```python
-# Add some documents
 for each_section in bns_data:
     retriever.add_document(each_section["_id"], each_section["text"])
 
-retriever.update_index()
+retriever.build_index()
 ```
+
+#### We will search using a simple query
 
 
 ```python
 # Search for a query
 print("Search for 'robbery':")
 results = retriever.search("robbery")
-print(results)
-
-# Get the matching documents
-print("\nTop matching documents:")
-for doc_id, score in results:
-    print(f"Document {doc_id} (Score: {score:.4f}): {retriever.documents[doc_id]}")
-```
-
-
-```python
-# Search for a query
-print("Search for 'robbery and chain-snatching':")
-results = retriever.search("robbery and chain-snatching")
 print(results)
 
 # Get the matching documents
